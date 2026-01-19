@@ -1,3 +1,5 @@
+''' SQL
+
 -- CRUD OPERATIONS
 --Create a New Book Record -- 
 --"978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
@@ -9,7 +11,7 @@ values ('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'H
 
 update members
 set member_address = '125 Main St'
-where member_id = 'C101';
+where member_id = 'C101'; '''
 
 --- Delete the record with issued_id = 'IS121' from the issued_status table.
 
@@ -119,6 +121,9 @@ join branch as b
 on e.branch_id = b.branch_id
 full join return_status as rst
 on rst.issued_id = ist.issued_id
+
+''' 
+
 join book as bk
 on bk.isbn = ist.issued_book_isbn
 group by 1;
