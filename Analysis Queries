@@ -1,8 +1,7 @@
-''' SQL
+
 
 -- CRUD OPERATIONS
 --Create a New Book Record -- 
---"978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
 
 insert into book (isbn, book_title, category, rental_price, status, author, publisher)
 values ('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.');
@@ -11,7 +10,7 @@ values ('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'H
 
 update members
 set member_address = '125 Main St'
-where member_id = 'C101'; '''
+where member_id = 'C101'; 
 
 --- Delete the record with issued_id = 'IS121' from the issued_status table.
 
@@ -24,7 +23,7 @@ where issued_id = 'IS121';
 select * from issued_status
 where issued_emp_id = 'E101';
 
-## Data Analysis
+---DATA ANALYSIS
 
 ---Find list of Members Who Have Issued More Than One Book
 
@@ -32,8 +31,7 @@ select issued_emp_id, count(issued_id) as total_book_issued from issued_status
 group by issued_emp_id
 having count (issued_id) > 1;
 
----Create Summary Tables: 
---Use CTAS to generate new tables based on query results - each book and total book_issued 
+---Use CTAS to generate new tables based on query results - each book and total book_issued 
 
 create table book_count
 as
@@ -75,7 +73,7 @@ join employees as e1
 on b.manager_id = e1.emp_id 
 order by manager asc;
 
---Create a Table of Books with Rental Price Above 5usd:
+--Create a Table of Books with Rental Price Above 5 usd:
 
 create table expensive_books as
 select book_title, rental_price from book
@@ -121,9 +119,6 @@ join branch as b
 on e.branch_id = b.branch_id
 full join return_status as rst
 on rst.issued_id = ist.issued_id
-
-''' 
-
 join book as bk
 on bk.isbn = ist.issued_book_isbn
 group by 1;
